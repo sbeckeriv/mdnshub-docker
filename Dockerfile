@@ -11,5 +11,4 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 COPY mdns-repeater /hub
 WORKDIR ./hub
 #CMD ["./src/mdnshubd -f eth0 eth1"]
-CMD ./mdns-repeater eth0 eth1
-CMD tail -f /dev/null
+CMD ./mdns-repeater -f eth0 eth1
