@@ -12,4 +12,5 @@ COPY mDNS-hub /hub
 WORKDIR ./hub
 RUN cmake .
 RUN make
-CMD ["./src/mdnshubd -f eth0 eth1"]
+COPY src/mdnshubd mdnshubd
+CMD ["./mdnshubd -f eth0 eth1"]
