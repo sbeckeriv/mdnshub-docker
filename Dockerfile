@@ -11,6 +11,6 @@ RUN apk add --no-cache python && \
     rm -r /root/.cache
 COPY castaway /hub
 WORKDIR ./hub
-RUN pip install
+RUN pip install requirements.txt
 
 CMD tail -f /dev/null
