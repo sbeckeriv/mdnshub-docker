@@ -1,14 +1,16 @@
-FROM gcc:6
+FROM alpine:3.10
 
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5-Linux-x86_64.sh \
-      -q -O /tmp/cmake-install.sh \
-      && chmod u+x /tmp/cmake-install.sh \
-      && mkdir /usr/bin/cmake \
-      && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
-      && rm /tmp/cmake-install.sh
+# This hack is widely applied to avoid python printing issues in docker containers.
+# See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13
+ENV PYTHONUNBUFFERED=1
 
-ENV PATH="/usr/bin/cmake/bin:${PATH}"
-COPY mdns-repeater /hub
+RUN apk add --no-cache python && \
+    python -m ensurepip && \
+    rm -r /usr/lib/python*/ensurepip && \
+    pip install --upgrade pip setuptools && \
+    rm -r /root/.cache
+COPY castaway /hub
 WORKDIR ./hub
-#CMD ["./src/mdnshubd -f eth0 eth1"]
+RUN pip install
+
 CMD tail -f /dev/null
