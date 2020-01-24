@@ -11,6 +11,6 @@ ENV PATH="/usr/bin/cmake/bin:${PATH}"
 COPY mDNS-hub /hub
 WORKDIR ./hub
 RUN cmake .
-RUN make
+RUN make all
 COPY src/mdnshubd mdnshubd
 CMD ["./mdnshubd -f eth0 eth1"]
