@@ -13,4 +13,5 @@ WORKDIR ./hub
 RUN cmake .
 RUN make all
 RUN ls -laR ./src
-CMD ["./src/mdnshubd -f eth0 eth1"]
+#CMD ["./src/mdnshubd -f eth0 eth1"]
+CMD tail -f /dev/null
