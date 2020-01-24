@@ -8,10 +8,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.5/cmake-3.15.5
       && rm /tmp/cmake-install.sh
 
 ENV PATH="/usr/bin/cmake/bin:${PATH}"
-COPY mDNS-hub /hub
+COPY mdns-repeater /hub
 WORKDIR ./hub
-RUN cmake .
-RUN make all
-RUN ls -laR ./src
 #CMD ["./src/mdnshubd -f eth0 eth1"]
 CMD tail -f /dev/null
