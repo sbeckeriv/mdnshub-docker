@@ -1,0 +1,6 @@
+# MDNS repeater in docker
+
+
+I have a google chrome cast 4k hardwired on 192.168.0.0 and my wifi is 192.168.10.0. I cant cast from my phone with out this. 
+
+I am running this on unraid with "host" as my network setting.
